@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, createElement } from 'react';
 
 export interface HeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
@@ -13,7 +13,7 @@ export const Heading = ({
   className = '',
   color = 'black'
 }: HeadingProps) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const tag = `h${level}` as const;
   
   const sizeClasses = {
     1: 'text-h1',
@@ -36,5 +36,5 @@ export const Heading = ({
     ${className}
   `.trim();
 
-  return <Tag className={classes}>{children}</Tag>;
+  return createElement(tag, { className: classes }, children);
 };
