@@ -1,21 +1,25 @@
+import { useState } from 'react';
 import { getAllProducts } from './utils/data';
 import { formatPrice } from './utils/formatters';
+import { Layout } from './components/layout';
 
 function App() {
+  const [cartItemCount] = useState(0);
   const products = getAllProducts();
-  const featuredProduct = products[0]; // Get first product for demo
+  const featuredProduct = products[0];
+
+  const handleCartClick = () => {
+    console.log('Cart clicked'); // Will open cart modal later
+  };
 
   return (
-    <div className="min-h-screen bg-audiophile-white-light font-manrope">
-      {/* Header Demo */}
-      <header className="bg-audiophile-black text-audiophile-white-pure py-8">
-        <div className="container mx-auto px-6">
-          <h1 className="text-h2 text-center">Audiophile</h1>
-        </div>
-      </header>
-
+    <Layout 
+      cartItemCount={cartItemCount}
+      currentPath="/"
+      onCartClick={handleCartClick}
+    >
       {/* Design System Demo */}
-      <main className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 py-12">
         <section className="mb-12">
           <h2 className="text-h3 text-audiophile-black mb-8 text-center">
             Design System Demo
@@ -71,11 +75,12 @@ function App() {
             <div className="bg-white rounded-lg shadow-lg p-8">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <img 
-                    src={featuredProduct.image.desktop} 
-                    alt={featuredProduct.name}
-                    className="w-full h-auto rounded-lg"
-                  />
+                  <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <span className="text-gray-500 text-center">
+                      Product Image<br />
+                      <small>(Assets not found)</small>
+                    </span>
+                  </div>
                 </div>
                 <div>
                   {featuredProduct.new && (
@@ -103,11 +108,11 @@ function App() {
             Project Structure Complete: <span className="text-audiophile-orange font-bold">{products.length} Products Loaded</span>
           </p>
           <p className="text-subtitle text-audiophile-black mt-2">
-            Ready for Component Development! 🎉
+            Navigation & Layout Ready!
           </p>
         </section>
-      </main>
-    </div>
+      </div>
+    </Layout>
   );
 }
 
