@@ -11,10 +11,10 @@ export const Badge = ({
   variant = 'default',
   className = ''
 }: BadgeProps) => {
-  const baseClasses = 'inline-block px-3 py-1 text-overline uppercase font-normal tracking-wide';
+  const baseClasses = 'inline-block px-3 py-1 text-overline uppercase font-normal'; // Removed tracking-wide
   
   const variantClasses = {
-    new: 'text-audiophile-orange',
+    new: 'text-white',
     sale: 'bg-red-500 text-white rounded',
     default: 'text-audiophile-black'
   };

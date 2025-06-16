@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'extra';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   loading?: boolean;
@@ -18,12 +18,13 @@ export const Button = ({
   children,
   ...props
 }: ButtonProps) => {
-  const baseClasses = 'inline-flex items-center justify-center font-bold uppercase tracking-wide transition-colors duration-200 border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseClasses = 'inline-flex items-center justify-center font-bold uppercase tracking-wide transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variantClasses = {
-    primary: 'bg-audiophile-orange text-audiophile-white-pure hover:bg-audiophile-orange-light',
+    primary: 'bg-audiophile-orange text-audiophile-white-pure hover:bg-audiophile-orange-light border-none',
     secondary: 'bg-transparent text-audiophile-black border-2 border-audiophile-black hover:bg-audiophile-black hover:text-audiophile-white-pure',
-    tertiary: 'bg-transparent text-audiophile-orange hover:text-audiophile-orange-light border-none'
+    tertiary: 'bg-transparent text-audiophile-black border-none hover:text-audiophile-orange',
+    extra: 'bg-black text-white border-none hover:bg-[#4C4C4C] hover:text-audiophile-white-pure'
   };
 
   const sizeClasses = {

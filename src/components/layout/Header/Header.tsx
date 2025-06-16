@@ -29,7 +29,7 @@ export const Header = ({
 
   return (
     <>
-      <header className="bg-audiophile-black border-b border-gray-800 relative z-40">
+      <header className="bg-audiophile-black border-b border-gray-800 sticky top-0 z-40">
         <Container>
           <div className="flex items-center justify-between h-20">
             {/* Mobile menu button */}
