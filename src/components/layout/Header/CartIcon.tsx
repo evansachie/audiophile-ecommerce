@@ -10,7 +10,7 @@ export const CartIcon = ({ itemCount = 0, onClick }: CartIconProps) => {
     <button 
       onClick={onClick}
       className="relative p-2 text-white hover:text-audiophile-orange transition-colors duration-200"
-      aria-label="Open cart"
+      aria-label={`Open cart ${itemCount > 0 ? `with ${itemCount} items` : ''}`}
     >
       <CartSvg className="w-6 h-5" />
       {itemCount > 0 && (
