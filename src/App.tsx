@@ -4,6 +4,7 @@ import { Layout } from './components/layout';
 import { HomePage } from './pages/HomePage/HomePage';
 import { HeadphonesPage } from './pages/HeadphonesPage/HeadphonesPage';
 import { SpeakersPage } from './pages/SpeakersPage/SpeakersPage';
+import { EarphonesPage } from './pages/EarphonesPage/EarphonesPage';
 
 const AppContent = () => {
   const [cartItemCount] = useState(0);
@@ -23,7 +24,7 @@ const AppContent = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/headphones" element={<HeadphonesPage />} />
         <Route path="/speakers" element={<SpeakersPage />} />
-        <Route path="/earphones" element={<div>Earphones Page Coming Soon</div>} />
+        <Route path="/earphones" element={<EarphonesPage />} />
       </Routes>
     </Layout>
   );
