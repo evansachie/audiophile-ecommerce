@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button, Heading } from '../../ui';
 import { ResponsiveImage } from '../../ui';
 import { getProductBySlug } from '../../../utils/data';
@@ -31,12 +32,11 @@ export const YX1Earphones = () => {
             YX1 Earphones
           </Heading>
           
-          <Button 
-            variant="secondary"
-            onClick={() => window.location.href = `/product/${product.slug}`}
-          >
-            See Product
-          </Button>
+          <Link to={`/product/${product.slug}`}>
+            <Button variant="secondary">
+              See Product
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

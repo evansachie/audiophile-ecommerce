@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container } from '../../ui';
 import { FacebookIcon } from '../../icons/FacebookIcon';
 import { TwitterIcon } from '../../icons/TwitterIcon';
@@ -13,23 +14,24 @@ export const Footer = () => {
         <div className="w-24 h-1 bg-audiophile-orange"></div>
         
         <div className="py-12 lg:py-16">
+          {/* Mobile/Tablet Layout - Centered */}
           <div className="lg:hidden text-center">
             <Logo />
 
             <nav className="mb-12">
               <div className="flex flex-col gap-6">
-                <a href="/" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                <Link to="/" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                   HOME
-                </a>
-                <a href="/headphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                </Link>
+                <Link to="/headphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                   HEADPHONES
-                </a>
-                <a href="/speakers" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                </Link>
+                <Link to="/speakers" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                   SPEAKERS
-                </a>
-                <a href="/earphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                </Link>
+                <Link to="/earphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                   EARPHONES
-                </a>
+                </Link>
               </div>
             </nav>
 
@@ -69,23 +71,24 @@ export const Footer = () => {
 
           {/* Desktop Layout */}
           <div className="hidden lg:block">
+            {/* Top row: Logo and Navigation */}
             <div className="flex justify-between items-center mb-8">
               <Logo />
 
             <nav>
                 <div className="flex gap-8">
-                  <a href="/" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                  <Link to="/" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                     HOME
-                  </a>
-                  <a href="/headphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                  </Link>
+                  <Link to="/headphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                     HEADPHONES
-                  </a>
-                  <a href="/speakers" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                  </Link>
+                  <Link to="/speakers" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                     SPEAKERS
-                  </a>
-                  <a href="/earphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
+                  </Link>
+                  <Link to="/earphones" className="text-subtitle hover:text-audiophile-orange transition-colors duration-200">
                     EARPHONES
-                  </a>
+                  </Link>
                 </div>
               </nav>
             </div>
