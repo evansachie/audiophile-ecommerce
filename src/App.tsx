@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { Layout } from './components/layout';
 import { HomePage } from './pages/HomePage/HomePage';
 import { HeadphonesPage } from './pages/HeadphonesPage/HeadphonesPage';
+import { SpeakersPage } from './pages/SpeakersPage/SpeakersPage';
 
-// App Content component to access useLocation hook
 const AppContent = () => {
   const [cartItemCount] = useState(0);
   const location = useLocation();
@@ -22,7 +22,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/headphones" element={<HeadphonesPage />} />
-        <Route path="/speakers" element={<div>Speakers Page Coming Soon</div>} />
+        <Route path="/speakers" element={<SpeakersPage />} />
         <Route path="/earphones" element={<div>Earphones Page Coming Soon</div>} />
       </Routes>
     </Layout>

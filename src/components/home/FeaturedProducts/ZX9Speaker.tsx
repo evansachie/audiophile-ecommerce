@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container, Button, Heading, Text } from '../../ui';
 import { ResponsiveImage } from '../../ui';
 import { getProductBySlug } from '../../../utils/data';
@@ -43,12 +44,11 @@ export const ZX9Speaker = () => {
               Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
             </Text>
             
-            <Button 
-              variant="extra"
-              onClick={() => window.location.href = `/product/${product.slug}`}
-            >
-              See Product
-            </Button>
+            <Link to={`/product/${product.slug}`}>
+              <Button variant="extra">
+                See Product
+              </Button>
+            </Link>
           </div>
         </div>
       </Container>
