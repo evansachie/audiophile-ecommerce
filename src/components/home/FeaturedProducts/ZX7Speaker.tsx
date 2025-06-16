@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button, Heading } from '../../ui';
 import { getProductBySlug } from '../../../utils/data';
 
@@ -24,12 +25,11 @@ export const ZX7Speaker = () => {
           ZX7 Speaker
         </Heading>
         
-        <Button 
-          variant="secondary"
-          onClick={() => window.location.href = `/product/${product.slug}`}
-        >
-          See Product
-        </Button>
+        <Link to={`/product/${product.slug}`}>
+          <Button variant="secondary">
+            See Product
+          </Button>
+        </Link>
       </div>
     </div>
   );

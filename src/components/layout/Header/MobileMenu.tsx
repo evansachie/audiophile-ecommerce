@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from '../../ui';
 
 interface MobileMenuProps {
@@ -48,34 +49,34 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         <Container>
           <nav className="py-8" role="navigation" aria-label="Mobile navigation">
             <div className="space-y-6">
-              <a 
-                href="/" 
+              <Link 
+                to="/" 
                 className="block text-h6 text-audiophile-black hover:text-audiophile-orange transition-colors duration-200 py-3 border-b border-gray-100"
                 onClick={onClose}
               >
                 HOME
-              </a>
-              <a 
-                href="/headphones" 
+              </Link>
+              <Link 
+                to="/headphones" 
                 className="block text-h6 text-audiophile-black hover:text-audiophile-orange transition-colors duration-200 py-3 border-b border-gray-100"
                 onClick={onClose}
               >
                 HEADPHONES
-              </a>
-              <a 
-                href="/speakers" 
+              </Link>
+              <Link 
+                to="/speakers" 
                 className="block text-h6 text-audiophile-black hover:text-audiophile-orange transition-colors duration-200 py-3 border-b border-gray-100"
                 onClick={onClose}
               >
                 SPEAKERS
-              </a>
-              <a 
-                href="/earphones" 
+              </Link>
+              <Link 
+                to="/earphones" 
                 className="block text-h6 text-audiophile-black hover:text-audiophile-orange transition-colors duration-200 py-3"
                 onClick={onClose}
               >
                 EARPHONES
-              </a>
+              </Link>
             </div>
           </nav>
         </Container>
