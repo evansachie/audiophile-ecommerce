@@ -5,7 +5,8 @@ import { HeadphonesPage } from './pages/HeadphonesPage/HeadphonesPage';
 import { SpeakersPage } from './pages/SpeakersPage/SpeakersPage';
 import { EarphonesPage } from './pages/EarphonesPage/EarphonesPage';
 import { ProductDetailPage } from './pages/ProductDetailPage/ProductDetailPage';
-import { CartProvider, useCart } from './contexts/CartContext'; // Fixed import path
+import { CheckoutPage } from './pages/CheckoutPage/CheckoutPage';
+import { CartProvider, useCart } from './contexts/CartContext';
 import { CartModal } from './components/cart/CartModal/CartModal';
 
 // App Content component to access useLocation hook
@@ -29,6 +30,7 @@ const AppContent = () => {
         <Route path="/speakers" element={<SpeakersPage />} />
         <Route path="/earphones" element={<EarphonesPage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
       <CartModal />
     </Layout>

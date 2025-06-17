@@ -17,7 +17,7 @@ export const CartModal = () => {
       isOpen={state.isOpen}
       onClose={() => toggleCart(false)}
       position="top-right"
-      className="w-[375px] max-h-[calc(100vh-112px)] overflow-auto mt-32 mr-20"
+      className="w-[375px] max-h-[calc(100vh-112px)] overflow-auto mt-10 mr-20"
       overlayClassName="pl-6 pr-16 md:pr-20 lg:pr-36 pt-0"
     >
       <Container className="py-8">
