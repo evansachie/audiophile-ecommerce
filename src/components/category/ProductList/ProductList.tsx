@@ -16,6 +16,7 @@ export const ProductList = ({ products }: ProductListProps) => {
               key={product.id}
               product={product}
               imagePosition={index % 2 === 0 ? 'left' : 'right'}
+              isFirst={index === 0}
             />
           ))}
         </div>

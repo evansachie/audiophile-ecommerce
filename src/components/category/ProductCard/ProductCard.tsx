@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Button, Heading, Text, Badge, ResponsiveImage } from '../../ui';
+import { Button, Heading, Text, ResponsiveImage } from '../../ui';
 import type { Product } from '../../../types';
 
 interface ProductCardProps {
   product: Product;
   imagePosition: 'left' | 'right';
+  isFirst?: boolean;
 }
 
 export const ProductCard = ({ product, imagePosition }: ProductCardProps) => {
@@ -24,10 +25,11 @@ export const ProductCard = ({ product, imagePosition }: ProductCardProps) => {
 
         {/* Product Info */}
         <div className={`text-center lg:text-left ${isImageLeft ? '' : 'lg:order-1'}`}>
+          {/* NEW PRODUCT label */}
           {product.new && (
-            <Badge variant="new" className="text-audiophile-orange mb-4 md:mb-6 block">
-              NEW PRODUCT
-            </Badge>
+            <p className="text-audiophile-orange text-sm uppercase tracking-[0.5em] font-normal mb-6">
+              New Product
+            </p>
           )}
           
           <Heading level={2} className="mb-6 md:mb-8">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Badge, Heading, Text, Button } from '../../ui';
+import { Container, Heading, Text, Button } from '../../ui';
 import { ResponsiveImage } from '../../ui';
 import { useCart } from '../../../contexts/CartContext';
 import { formatPrice } from '../../../utils/formatters';
@@ -39,9 +39,9 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
           {/* Product Info */}
           <div>
             {product.new && (
-              <Badge variant="new" className="text-audiophile-orange mb-4 md:mb-6 block">
-                NEW PRODUCT
-              </Badge>
+              <p className="text-audiophile-orange text-sm uppercase tracking-[0.5em] font-normal mb-6">
+                New Product
+              </p>
             )}
             
             <Heading level={2} className="mb-6 md:mb-8">
