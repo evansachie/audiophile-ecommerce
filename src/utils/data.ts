@@ -1,12 +1,72 @@
 import { Product, Category, ProductFilters } from '@/types';
 import productsData from '../data.json';
 
+// Helper function to fix relative image paths
+const fixImagePaths = (product: Product): Product => {
+  // Clone the product to avoid mutating the original
+  const fixedProduct = { ...product };
+  
+  // Fix main image paths
+  if (fixedProduct.image) {
+    fixedProduct.image = {
+      mobile: fixedProduct.image.mobile.replace('./', '/'),
+      tablet: fixedProduct.image.tablet.replace('./', '/'),
+      desktop: fixedProduct.image.desktop.replace('./', '/'),
+    };
+  }
+
+  // Fix category image paths
+  if (fixedProduct.categoryImage) {
+    fixedProduct.categoryImage = {
+      mobile: fixedProduct.categoryImage.mobile.replace('./', '/'),
+      tablet: fixedProduct.categoryImage.tablet.replace('./', '/'),
+      desktop: fixedProduct.categoryImage.desktop.replace('./', '/'),
+    };
+  }
+
+  // Fix gallery image paths
+  if (fixedProduct.gallery) {
+    fixedProduct.gallery = {
+      first: {
+        mobile: fixedProduct.gallery.first.mobile.replace('./', '/'),
+        tablet: fixedProduct.gallery.first.tablet.replace('./', '/'),
+        desktop: fixedProduct.gallery.first.desktop.replace('./', '/'),
+      },
+      second: {
+        mobile: fixedProduct.gallery.second.mobile.replace('./', '/'),
+        tablet: fixedProduct.gallery.second.tablet.replace('./', '/'),
+        desktop: fixedProduct.gallery.second.desktop.replace('./', '/'),
+      },
+      third: {
+        mobile: fixedProduct.gallery.third.mobile.replace('./', '/'),
+        tablet: fixedProduct.gallery.third.tablet.replace('./', '/'),
+        desktop: fixedProduct.gallery.third.desktop.replace('./', '/'),
+      },
+    };
+  }
+
+  // Fix related product image paths
+  if (fixedProduct.others) {
+    fixedProduct.others = fixedProduct.others.map(other => ({
+      ...other,
+      image: {
+        mobile: other.image.mobile.replace('./', '/'),
+        tablet: other.image.tablet.replace('./', '/'),
+        desktop: other.image.desktop.replace('./', '/'),
+      }
+    }));
+  }
+
+  return fixedProduct;
+};
+
 export const getAllProducts = (): Product[] => {
-  return productsData as Product[];
+  return (productsData as Product[]).map(fixImagePaths);
 };
 
 export const getProductBySlug = (slug: string): Product | undefined => {
-  return getAllProducts().find(product => product.slug === slug);
+  const product = getAllProducts().find(product => product.slug === slug);
+  return product;
 };
 
 export const getProductById = (id: number): Product | undefined => {
