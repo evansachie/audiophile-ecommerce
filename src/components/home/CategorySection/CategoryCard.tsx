@@ -8,12 +8,11 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = ({ category, title }: CategoryCardProps) => {
-  const assetBasePath = ''; 
 
   const categoryImagePaths = {
-    mobile: `${assetBasePath}/assets/shared/desktop/image-category-thumbnail-${category}.png`,
-    tablet: `${assetBasePath}/assets/shared/desktop/image-category-thumbnail-${category}.png`,
-    desktop: `${assetBasePath}/assets/shared/desktop/image-category-thumbnail-${category}.png`
+    mobile: `/assets/shared/desktop/image-category-thumbnail-${category}.png`,
+    tablet: `/assets/shared/desktop/image-category-thumbnail-${category}.png`,
+    desktop: `/assets/shared/desktop/image-category-thumbnail-${category}.png`
   };
 
   return (

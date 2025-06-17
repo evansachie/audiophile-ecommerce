@@ -9,9 +9,9 @@ export const YX1Earphones = () => {
   if (!product) return null;
 
   const earphonesImage = {
-    mobile: './assets/home/mobile/image-earphones-yx1.jpg',
-    tablet: './assets/home/tablet/image-earphones-yx1.jpg',
-    desktop: './assets/home/desktop/image-earphones-yx1.jpg'
+    mobile: '/assets/home/mobile/image-earphones-yx1.jpg',
+    tablet: '/assets/home/tablet/image-earphones-yx1.jpg',
+    desktop: '/assets/home/desktop/image-earphones-yx1.jpg'
   };
 
   return (
