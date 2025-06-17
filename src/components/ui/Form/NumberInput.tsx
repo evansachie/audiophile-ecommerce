@@ -1,11 +1,11 @@
-import { ChangeEvent } from 'react';
+import { useState } from 'react';
 
 export interface NumberInputProps {
   value: number;
   onChange: (value: number) => void;
   min?: number;
   max?: number;
-  disabled?: boolean;
+  step?: number;
   className?: string;
 }
 
@@ -14,62 +14,60 @@ export const NumberInput = ({
   onChange,
   min = 1,
   max = 99,
-  disabled = false,
+  step = 1,
   className = ''
 }: NumberInputProps) => {
-  const handleDecrement = () => {
-    if (value > min && !disabled) {
-      onChange(value - 1);
-    }
-  };
+  const [inputValue, setInputValue] = useState<number>(value);
 
-  const handleIncrement = () => {
-    if (value < max && !disabled) {
-      onChange(value + 1);
-    }
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(e.target.value) || min;
-    if (newValue >= min && newValue <= max) {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = parseInt(e.target.value);
+    if (!isNaN(newValue) && newValue >= min && newValue <= max) {
+      setInputValue(newValue);
       onChange(newValue);
     }
   };
 
-  const containerClasses = `
-    flex items-center bg-audiophile-white
-    ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-    ${className}
-  `.trim();
+  const handleIncrement = () => {
+    if (inputValue < max) {
+      const newValue = inputValue + step;
+      setInputValue(newValue);
+      onChange(newValue);
+    }
+  };
 
-  const buttonClasses = 'w-12 h-12 flex items-center justify-center text-audiophile-black hover:text-audiophile-orange transition-colors duration-200 cursor-pointer border-none bg-transparent disabled:cursor-not-allowed disabled:hover:text-audiophile-black';
+  const handleDecrement = () => {
+    if (inputValue > min) {
+      const newValue = inputValue - step;
+      setInputValue(newValue);
+      onChange(newValue);
+    }
+  };
 
   return (
-    <div className={containerClasses}>
-      <button
+    <div className={`flex items-center bg-audiophile-white h-12 ${className}`}>
+      <button 
         type="button"
+        className="w-12 h-full flex items-center justify-center text-gray-500 hover:text-audiophile-orange transition-colors"
         onClick={handleDecrement}
-        disabled={disabled || value <= min}
-        className={buttonClasses}
+        disabled={inputValue <= min}
         aria-label="Decrease quantity"
       >
-        −
+        -
       </button>
       <input
         type="number"
-        value={value}
+        value={inputValue}
         onChange={handleInputChange}
         min={min}
         max={max}
-        disabled={disabled}
-        className="w-16 h-12 text-center border-none bg-transparent text-body font-bold focus:outline-none"
+        className="w-10 h-full border-none text-center font-bold bg-transparent focus:outline-none"
         aria-label="Quantity"
       />
-      <button
+      <button 
         type="button"
+        className="w-12 h-full flex items-center justify-center text-gray-500 hover:text-audiophile-orange transition-colors"
         onClick={handleIncrement}
-        disabled={disabled || value >= max}
-        className={buttonClasses}
+        disabled={inputValue >= max}
         aria-label="Increase quantity"
       >
         +

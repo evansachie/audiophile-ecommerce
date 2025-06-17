@@ -12,7 +12,7 @@ export type { InputProps } from './Form/Input';
 export type { RadioButtonProps } from './Form/RadioButton';
 export type { NumberInputProps } from './Form/NumberInput';
 
-// Layout components
+// Layout components 
 export { Container } from './Layout/Container';
 export { Section } from './Layout/Section';
 export type { ContainerProps } from './Layout/Container';
@@ -33,3 +33,7 @@ export type { ResponsiveImageProps } from './Media/ResponsiveImage';
 // Utility components
 export { Badge } from './Badge/Badge';
 export type { BadgeProps } from './Badge/Badge';
+
+// Modal components
+export { Modal } from './Modal/Modal';
+export type { ModalProps } from './Modal/Modal';

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/layout';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -6,18 +5,21 @@ import { HeadphonesPage } from './pages/HeadphonesPage/HeadphonesPage';
 import { SpeakersPage } from './pages/SpeakersPage/SpeakersPage';
 import { EarphonesPage } from './pages/EarphonesPage/EarphonesPage';
 import { ProductDetailPage } from './pages/ProductDetailPage/ProductDetailPage';
+import { CartProvider, useCart } from './contexts/CartContext'; // Fixed import path
+import { CartModal } from './components/cart/CartModal/CartModal';
 
+// App Content component to access useLocation hook
 const AppContent = () => {
-  const [cartItemCount] = useState(0);
   const location = useLocation();
+  const { toggleCart, distinctItems } = useCart();
 
   const handleCartClick = () => {
-    console.log('Cart clicked');
+    toggleCart();
   };
 
   return (
     <Layout 
-      cartItemCount={cartItemCount}
+      cartItemCount={distinctItems}
       currentPath={location.pathname}
       onCartClick={handleCartClick}
     >
@@ -28,6 +30,7 @@ const AppContent = () => {
         <Route path="/earphones" element={<EarphonesPage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
       </Routes>
+      <CartModal />
     </Layout>
   );
 };
@@ -35,7 +38,9 @@ const AppContent = () => {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <CartProvider>
+        <AppContent />
+      </CartProvider>
     </Router>
   );
 }

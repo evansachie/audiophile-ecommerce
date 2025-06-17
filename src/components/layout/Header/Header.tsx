@@ -5,6 +5,7 @@ import { Navigation } from './Navigation';
 import { CartIcon } from './CartIcon';
 import { MobileMenu } from './MobileMenu';
 import { Logo } from './Logo';
+import { useCart } from '../../../contexts/CartContext';
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -13,11 +14,9 @@ interface HeaderProps {
 }
 
 export const Header = ({ 
-  cartItemCount = 0, 
-  currentPath = '/',
-  onCartClick 
-}: HeaderProps) => {
+  currentPath = '/'}: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { toggleCart, distinctItems } = useCart(); // Use distinctItems instead of totalItems
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -25,6 +24,10 @@ export const Header = ({
 
   const handleMobileMenuClose = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleCartClick = () => {
+    toggleCart();
   };
 
   return (
@@ -52,8 +55,8 @@ export const Header = ({
             {/* Cart Icon */}
             <div className="flex-shrink-0 lg:flex-1 lg:justify-end flex justify-end">
               <CartIcon 
-                itemCount={cartItemCount} 
-                onClick={onCartClick}
+                itemCount={distinctItems}
+                onClick={handleCartClick}
               />
             </div>
           </div>

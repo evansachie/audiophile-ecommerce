@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Container, Badge, Heading, Text, Button, NumberInput, ResponsiveImage } from '../../ui';
+import { Container, Badge, Heading, Text, Button } from '../../ui';
+import { ResponsiveImage } from '../../ui';
+import { useCart } from '../../../contexts/CartContext';
+import { formatPrice } from '../../../utils/formatters';
 import type { Product } from '../../../types';
 
 interface ProductDetailProps {
@@ -8,10 +11,15 @@ interface ProductDetailProps {
 
 export const ProductDetail = ({ product }: ProductDetailProps) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    console.log('Added to cart:', { product, quantity });
-    // Will be connected to cart context later
+    addToCart(product, quantity);
+  };
+
+  const handleQuantityChange = (newQuantity: number) => {
+    if (newQuantity < 1) return;
+    setQuantity(newQuantity);
   };
 
   return (
@@ -19,11 +27,11 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
       <Container>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Product Image */}
-          <div className="bg-audiophile-white-light rounded-lg p-8">
+          <div className="bg-audiophile-white rounded-lg p-8">
             <ResponsiveImage
               image={product.image}
               alt={product.name}
-              className="w-full max-h-[400px] object-contain"
+              className="w-full h-auto max-h-[400px] object-contain"
               priority
             />
           </div>
@@ -44,19 +52,30 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
               {product.description}
             </Text>
             
-            <div className="mb-6">
-              <p className="text-h6 font-bold">${product.price}</p>
+            <div className="mb-8">
+              <p className="text-h6 font-bold">{formatPrice(product.price)}</p>
             </div>
             
             {/* Add to Cart Actions */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <div className="w-32">
-                <NumberInput
-                  value={quantity}
-                  onChange={setQuantity}
-                  min={1}
-                  max={10}
-                />
+              <div className="flex items-center bg-audiophile-white h-14 w-32">
+                <button 
+                  className="px-4 text-gray-500 hover:text-audiophile-orange font-bold transition-colors"
+                  onClick={() => handleQuantityChange(quantity - 1)}
+                  aria-label="Decrease quantity"
+                >
+                  -
+                </button>
+                <span className="flex-1 text-center font-bold">
+                  {quantity}
+                </span>
+                <button 
+                  className="px-4 text-gray-500 hover:text-audiophile-orange font-bold transition-colors"
+                  onClick={() => handleQuantityChange(quantity + 1)}
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
               </div>
               
               <Button 
