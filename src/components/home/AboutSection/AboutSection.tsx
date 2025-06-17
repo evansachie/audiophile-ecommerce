@@ -1,11 +1,10 @@
 import { Container, Section, Heading, Text } from '../../ui';
-import { ResponsiveImage } from '../../ui';
 
 export const AboutSection = () => {
   const aboutImage = {
-    mobile: './assets/shared/mobile/image-best-gear.jpg',
-    tablet: './assets/shared/tablet/image-best-gear.jpg',
-    desktop: './assets/shared/desktop/image-best-gear.jpg'
+    mobile: '/assets/shared/mobile/image-best-gear.jpg',
+    tablet: '/assets/shared/tablet/image-best-gear.jpg',
+    desktop: '/assets/shared/desktop/image-best-gear.jpg'
   };
 
   return (
@@ -26,13 +25,23 @@ export const AboutSection = () => {
             </Text>
           </div>
 
-          {/* Image */}
-          <div className="order-1 lg:order-2">
-            <ResponsiveImage
-              image={aboutImage}
-              alt="Person listening to music"
-              className="w-full rounded-lg"
-            />
+          <div className="order-1 lg:order-2 bg-audiophile-white-light rounded-lg overflow-hidden">
+            {/* Fallback image if the actual image doesn't load */}
+            <div className="aspect-w-16 aspect-h-9 lg:aspect-h-10">
+              <img
+                src={aboutImage.desktop}
+                alt="Person listening to music"
+                className="w-full h-full object-cover rounded-lg"
+                onError={(e) => {
+                  e.currentTarget.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`
+                    <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="600" height="400" fill="#F1F1F1" />
+                      <text x="300" y="200" font-family="Arial" font-size="20" fill="#777777" text-anchor="middle">About Image</text>
+                    </svg>
+                  `)}`;
+                }}
+              />
+            </div>
           </div>
         </div>
       </Container>
