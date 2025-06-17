@@ -1,54 +1,99 @@
-# React + TypeScript + Vite
+# Audiophile E-commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Site](https://img.shields.io/badge/Live%20Site-Vercel-brightgreen)](https://audiophile-ecommerce-puce.vercel.app/)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/AWESOME04/audiophile-ecommerce)
 
-Currently, two official plugins are available:
+A fully-functional, multi-page e-commerce application built with React, TypeScript, and Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Screenshot of Audiophile E-commerce Website](public/heroimage.png)
 
-## Expanding the ESLint configuration
+## About This Project
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project is a solution to a frontend development challenge for the Talent Mobility Program (TMP) organized by [Azubi Africa](http://azubiafrica.org/). The challenge required building a fully functional multi-page e-commerce website with specific requirements for user interaction, responsive design, and functionality.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Features
+
+- **Responsive Design**: Layout optimized for mobile, tablet, and desktop views
+- **Interactive Elements**: Hover states for all interactive elements
+- **Shopping Cart**: Add/remove products and update quantities
+- **Form Validation**: Complete checkout form with validation
+- **Accurate Pricing**: Order totals with product subtotal, shipping ($50), and VAT (20%)
+- **Order Confirmation**: Modal with order summary after successful checkout
+- **Cart Persistence**: Shopping cart state is saved between page refreshes
+
+## Pages
+
+- **Home Page**: Features hero section and featured products
+- **Category Pages**: Separate pages for headphones, speakers, and earphones
+- **Product Detail Pages**: Detailed information for each product
+- **Checkout Page**: Form to complete purchase with billing, shipping, and payment details
+
+## Technology Stack
+
+- **Frontend Framework**: React 19 with TypeScript
+- **Routing**: React Router v7
+- **Styling**: Tailwind CSS
+- **Form Handling**: Formik with Yup validation
+- **State Management**: React Context API
+- **Build Tool**: Vite
+- **Deployment**: Vercel
+
+## Project Structure
+
+```
+src
+├── components
+│   ├── Cart
+│   ├── Checkout
+│   ├── Home
+│   ├── Product
+│   └── Shared
+├── context
+│   └── CartContext.tsx
+├── hooks
+│   ├── useCart.ts
+│   └── useProducts.ts
+├── pages
+│   ├── CartPage.tsx
+│   ├── CheckoutPage.tsx
+│   ├── HomePage.tsx
+│   ├── ProductPage.tsx
+│   └── NotFoundPage.tsx
+├── styles
+│   └── tailwind.css
+├── App.tsx
+├── index.tsx
+└── vite-env.d.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To get a local copy up and running, follow these steps:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/AWESOME04/audiophile-ecommerce.git
+   ```
+
+2. **Navigate to the project directory**
+
+   ```bash
+   cd audiophile-ecommerce
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser** and go to `http://localhost:5173` to see the app in action.
+
+Made with ❤️ by [Evans Acheampong](https://github.com/AWESOME04)
