@@ -1,7 +1,5 @@
 import { CartItem } from './cart.types';
 
-export type PaymentMethod = 'e-money' | 'cash';
-
 // Billing details form interface
 export interface BillingDetails {
   name: string;
@@ -19,24 +17,13 @@ export interface ShippingInfo {
 
 // Payment details interface
 export interface PaymentDetails {
-  paymentMethod: PaymentMethod;
+  paymentMethod: 'e-money' | 'cash';
   eMoneyNumber?: string;
   eMoneyPin?: string;
 }
 
 // Complete checkout form interface
-export interface CheckoutForm {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  zipCode: string;
-  city: string;
-  country: string;
-  paymentMethod: PaymentMethod;
-  eMoneyNumber?: string;
-  eMoneyPin?: string;
-}
+export interface CheckoutForm extends BillingDetails, ShippingInfo, PaymentDetails {}
 
 // Order interface for submitting orders
 export interface Order {
@@ -54,11 +41,28 @@ export interface Order {
 
 // Form field error interface
 export interface FormFieldError {
-  field: string;
+  field?: string;
   message: string;
+  type?: string; // Add this property to fix the error
 }
 
 // Form errors interface
 export interface FormErrors {
   [key: string]: string;
+}
+
+// Validation error types
+export type ValidationErrorType = 
+  | 'required'
+  | 'pattern'
+  | 'minLength'
+  | 'maxLength'
+  | 'format';
+
+// Form field validation interface
+export interface FieldValidation {
+  required?: boolean;
+  pattern?: RegExp;
+  minLength?: number;
+  maxLength?: number;
 }
