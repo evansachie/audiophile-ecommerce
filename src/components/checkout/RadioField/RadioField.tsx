@@ -25,7 +25,7 @@ export const RadioField = ({
           checked
             ? 'border-audiophile-orange bg-white'
             : 'border-gray-300 hover:border-audiophile-orange'
-        } ${hasError ? 'border-red-500' : ''}`}
+        } ${hasError ? 'border-[#CD2C2C]' : ''}`}
       >
         <input
           type="radio"
@@ -35,7 +35,9 @@ export const RadioField = ({
           checked={checked}
           value={value}
         />
-        <span className="ml-3 font-bold text-sm">{label}</span>
+        <span className={`ml-3 font-bold text-sm ${hasError ? 'text-[#CD2C2C]' : ''}`}>
+          {label}
+        </span>
       </label>
     </div>
   );

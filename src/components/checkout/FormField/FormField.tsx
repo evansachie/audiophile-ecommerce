@@ -20,11 +20,16 @@ export const FormField = ({
   return (
     <div className={`mb-4 ${className}`}>
       <div className="flex justify-between mb-2">
-        <label htmlFor={name} className="block text-sm font-bold">
+        <label
+          htmlFor={name}
+          className={`block text-sm font-bold ${
+            hasError ? 'text-[#CD2C2C]' : ''
+          }`}
+        >
           {label}
         </label>
         {hasError && (
-          <span className="text-red-500 text-xs">{meta.error}</span>
+          <span className="text-[#CD2C2C] text-xs">Wrong format</span>
         )}
       </div>
 
@@ -34,7 +39,7 @@ export const FormField = ({
         {...props}
         className={`w-full px-4 py-3 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-audiophile-orange ${
           hasError
-            ? 'border-red-500'
+            ? 'border-[#CD2C2C]'
             : 'border-gray-300 focus:border-audiophile-orange'
         }`}
       />
