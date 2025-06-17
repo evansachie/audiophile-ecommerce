@@ -74,7 +74,16 @@ export const getProductById = (id: number): Product | undefined => {
 };
 
 export const getProductsByCategory = (category: Category): Product[] => {
-  return getAllProducts().filter(product => product.category === category);
+  // First sort by "new" status, then by price (highest first)
+  return getAllProducts()
+    .filter(product => product.category === category)
+    .sort((a, b) => {
+      // New products first
+      if (a.new && !b.new) return -1;
+      if (!a.new && b.new) return 1;
+      // Then sort by price (highest first)
+      return b.price - a.price;
+    });
 };
 
 export const getNewProducts = (): Product[] => {

@@ -11,22 +11,22 @@ import { CheckoutForm as CheckoutFormType, Order } from '../../types/checkout.ty
 
 // Validation schema
 const checkoutSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  email: Yup.string().email('Invalid email address').required('Required'),
-  phone: Yup.string().required('Required'),
-  address: Yup.string().required('Required'),
-  zipCode: Yup.string().required('Required'),
-  city: Yup.string().required('Required'),
-  country: Yup.string().required('Required'),
-  paymentMethod: Yup.string().oneOf(['e-money', 'cash']).required('Required'),
+  name: Yup.string().required('Wrong format'),
+  email: Yup.string().email('Wrong format').required('Wrong format'),
+  phone: Yup.string().required('Wrong format'),
+  address: Yup.string().required('Wrong format'),
+  zipCode: Yup.string().required('Wrong format'),
+  city: Yup.string().required('Wrong format'),
+  country: Yup.string().required('Wrong format'),
+  paymentMethod: Yup.string().oneOf(['e-money', 'cash']).required('Wrong format'),
   eMoneyNumber: Yup.string().when('paymentMethod', {
     is: (val: string) => val === 'e-money',
-    then: () => Yup.string().required('Required'),
+    then: () => Yup.string().required('Wrong format'),
     otherwise: () => Yup.string().notRequired()
   }),
   eMoneyPin: Yup.string().when('paymentMethod', {
     is: (val: string) => val === 'e-money',
-    then: () => Yup.string().required('Required'),
+    then: () => Yup.string().required('Wrong format'),
     otherwise: () => Yup.string().notRequired()
   }),
 });

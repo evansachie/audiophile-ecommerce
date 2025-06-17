@@ -1,5 +1,7 @@
-import { Button, Heading } from '../../ui';
+import { Heading } from '../../ui';
 import { ResponsiveImage } from '../../ui';
+import { Link } from 'react-router-dom';
+import { ArrowRightIcon } from '../../icons/ArrowRightIcon';
 import type { Category } from '../../../types';
 
 interface CategoryCardProps {
@@ -29,14 +31,13 @@ export const CategoryCard = ({ category, title }: CategoryCardProps) => {
         {title}
       </Heading>
       
-      <Button 
-        variant="tertiary"
-        onClick={() => window.location.href = `/category/${category}`}
-        className="group-hover:text-audiophile-orange-light"
+      <Link 
+        to={`/${category}`} 
+        className="flex items-center text-sm text-gray-500 hover:text-audiophile-orange transition-colors"
       >
-        Shop
-        <span className="ml-2 text-audiophile-orange group-hover:text-audiophile-orange-light">›</span>
-      </Button>
+        <span className="mr-2">SHOP</span>
+        <ArrowRightIcon className="w-2 h-3" />
+      </Link>
     </div>
   );
 };

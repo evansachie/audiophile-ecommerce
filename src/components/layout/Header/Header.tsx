@@ -32,7 +32,7 @@ export const Header = ({
 
   return (
     <>
-      <header className="bg-audiophile-black border-b border-gray-800 sticky top-0 z-40">
+      <header className="bg-audiophile-black sticky top-0 z-40">
         <Container>
           <div className="flex items-center justify-between h-20">
             {/* Mobile menu button */}
@@ -59,6 +59,12 @@ export const Header = ({
                 onClick={handleCartClick}
               />
             </div>
+          </div>
+          
+          <div className="flex items-center">
+            <div className="flex-shrink-0 lg:w-1/6"></div>
+            <div className="flex-grow border-b border-gray-800"></div>
+            <div className="flex-shrink-0 lg:w-1/6"></div>
           </div>
         </Container>
       </header>
