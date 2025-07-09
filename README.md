@@ -1,7 +1,7 @@
 # Audiophile E-commerce Website
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-Vercel-brightgreen)](https://audiophile-ecommerce-puce.vercel.app/)
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/AWESOME04/audiophile-ecommerce)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/evansachie/audiophile-ecommerce)
 
 A fully-functional, multi-page e-commerce application built with React, TypeScript, and Tailwind CSS.
 
