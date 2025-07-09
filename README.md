@@ -96,4 +96,4 @@ To get a local copy up and running, follow these steps:
 
 5. **Open your browser** and go to `http://localhost:5173` to see the app in action.
 
-Made with ❤️ by [Evans Acheampong](https://github.com/AWESOME04)
+Made with ❤️ by [Evans Acheampong](https://github.com/evansachie)
